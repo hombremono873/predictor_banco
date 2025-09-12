@@ -44,10 +44,10 @@ El conjunto de datos incluye características demográficas y económicas de cli
   e. matplotlib
   f. joblib
 
-### Puedes instalar las librerías asi:  
+### Puedes instalar las librerías asi:
 pip install pandas numpy scikit-learn matplotlib joblib
 
-### Funcionamiento del código:  
+### Funcionamiento del código: 
 ¿Qué hace este código?
 
 a. Carga los datos desde train.csv y test.csv.
@@ -78,7 +78,47 @@ i. (Opcional) Descarga el modelo entrenado para uso posterior:
    ### files.download("modelo_bank_predictor.pkl") 
 
 ##  Contacto
-Para dudas o contribuciones contactar:   
+Para dudas o contribuciones contactar:
 Omar Alberto Torres
 cel: 3043440112
 email: omara.torres@udea.edu.co
+
+# Gestión de archivos grandes con Git LFS
+
+Este proyecto requiere el uso de archivos grandes (.csv) que exceden el límite de tamaño estándar de GitHub.  
+Para garantizar su correcto funcionamiento, se utilizó Git LFS (Large File Storage).
+
+### Archivos incluidos con LFS:
+- fase-1/train.csv (~62 MB) – Dataset de entrenamiento
+- fase-1/modelo_entrenado.pkl (~180 MB) – Modelo de clasificación entrenado
+
+### ¿Qué se hizo?
+
+1. Se instaló Git LFS en Windows desde: https://git-lfs.github.com
+2. Se inicializó Git LFS:
+   ```bash
+   git lfs install
+
+## Para manejo de archivos *.csv  y *.pkl de ser necesario use los siguientes comandos previo a tener 
+## Instaladdo sfl
+git lfs track "*.csv"
+git lfs track "*.pkl"
+git add .gitattributes
+
+## En caso de ser necesario limpiar historia de commit puede ejecutarse el comando
+## Se limpiaron los commits antiguos y se migraron los archivos al sistema LFS:
+git lfs migrate import --include="*.csv,*.pkl"
+
+## Recomendaciones para clonar este repositorio
+Antes de clonar o usar este repositorio, instala Git LFS en tu máquina.
+De lo contrario, los archivos .csv y .pkl se verán como referencias inválidas (punteros).
+
+## Se descargo lfs asi
+1. Se instaló Git LFS en Windows descargando el instalador desde: https://git-lfs.github.com
+2. se ejecuto: git-lfs-windows-v3.7.0.exe
+3. Luego se ejecutó:
+   git lfs install
+
+
+
+
