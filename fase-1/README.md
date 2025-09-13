@@ -107,17 +107,23 @@ git add .gitattributes
 
 ## En caso de ser necesario limpiar historia de commit puede ejecutarse el comando
 ## Se limpiaron los commits antiguos y se migraron los archivos al sistema LFS:
-git lfs migrate import --include="*.csv,*.pkl"
+git lfs migrate import --include="*.csv"
 
 ## Recomendaciones para clonar este repositorio
 Antes de clonar o usar este repositorio, instala Git LFS en tu máquina.
-De lo contrario, los archivos .csv y .pkl se verán como referencias inválidas (punteros).
+De lo contrario, los archivos .csv y  se verán como referencias inválidas (punteros).
 
 ## Se descargo lfs asi
+# Paso demasiado importante
+Durante La creación del repositorio en Github fue necesario instalar la herramienta "Git Large storage"
+Segun sea el sistema operativo debes instalar lsf, ejecutar git-lfs-windows-v3.7.0 (Mi equipo tiene sistema operativo windos)
+
 1. Se instaló Git LFS en Windows descargando el instalador desde: https://git-lfs.github.com
 2. se ejecuto: git-lfs-windows-v3.7.0.exe
 3. Luego se ejecutó:
-   git lfs install
+   ejecute git lfs --version (para ver version instalada)
+   git lfs install  (inicializa)
+   Clonar el repositorio (Es muy importante no hacer descarga ZIP, debe clonarse el repositorio)
 
 
 
