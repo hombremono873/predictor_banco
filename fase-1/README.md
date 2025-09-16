@@ -41,51 +41,68 @@ Estas librerías ya vienen instaladas en Google Colab. Si deseas ejecutar en loc
 
 ```bash
 pip install pandas numpy scikit-learn matplotlib joblib
-``` 
+```
+# funcionamiento del codigo
+1. El notebook realiza los siguientes pasos:
+2. Carga los datos desde train.csv y test.csv.
+3. Exploración preliminar de los datos.
+4. Limpieza y codificación de variables categóricas.
+5. Entrenamiento de un modelo de clasificación con Random Forest.
+6. Evaluación con métricas: Accuracy, ROC-AUC y PR-AUC.
+7. Exportación del modelo entrenado (modelo_entrenado.pkl).
+8. Generación del archivo submission.csv con predicciones sobre el conjunto de prueba.
+9. Limitaciones actuales
+10. No incluye validación cruzada ni optimización de hiperparámetros.
+11. No incorpora técnicas avanzadas de ingeniería de características.
+12. No está dockerizado ni expuesto como servicio web (fase futura).
 
-## Funcionamiento del Código
+# Cómo Ejecutar el Proyecto
+1) Requisitos para clonar con Git LFS
+   Este repositorio utiliza Git LFS para manejar archivos grandes (.csv y .pkl).
+   Antes de clonar, en tu máquina ejecuta una sola vez:
+```bash   
+git lfs install
+```
 
-El notebook realiza los siguientes pasos:
+Importante: no descargues el repositorio como ZIP, debes clonarlo con Git para que LFS recupere correctamente los archivos binarios.
 
-1. Carga los datos desde `train.csv` y `test.csv`.
-2. Exploración preliminar de los datos.
-3. Limpieza y codificación de variables categóricas.
-4. Entrenamiento de un modelo de clasificación con **Random Forest**.
-5. Evaluación con métricas: Accuracy, ROC-AUC y PR-AUC.
-6. Exportación del modelo entrenado (`modelo_entrenado.pkl`).
-7. Generación del archivo `submission.csv` con predicciones sobre el conjunto de prueba.
+# Clonar el repositorio
+```bash  
+git clone https://github.com/usuario/mi-proyecto.git
+cd mi-proyecto
+```
+Si no instalas Git LFS, los archivos .csv y .pkl aparecerán como “punteros” inválidos.
 
-## Limitaciones actuales
+# Abrir y ejecutar en Google Colab
+1. Subir modelo_predictor_banco.ipynb a Colab.
+2. Subir también train.csv y test.csv al entorno de Colab antes de ejecutar el
 
-- No incluye validación cruzada ni optimización de hiperparámetros.  
-- No incorpora técnicas avanzadas de ingeniería de características.  
-- No está dockerizado ni expuesto como servicio web (fase futura).  
+# Código.
+Ejecutar las celdas en orden:
+1. Carga de datos
+2. Preprocesamiento
+3. Entrenamiento
+4. Evaluación
+5. Exportación del modelo
 
-## Cómo Ejecutar el Proyecto
+# Anexo
+```bash 
+Configurar Git LFS en este repo
+git lfs track "*.csv"
+git lfs track "*.pkl"
+git add .gitattributes
+git commit -m "Configura Git LFS para CSV y PKL"
+```
+# Rescate: si ya hiciste commits sin LFS y GitHub los rechazó
+1. git lfs migrate import --include="*.csv,*.pkl"
+2. git add .
+3. git commit -m "Migra CSV/PKL existentes a Git LFS"
+4. git push origin main --force
 
-1. **Clonar el repositorio** (no descargar como ZIP, ya que se usa Git LFS):
-```bash
-git clone https://github.com/usuario/proyecto.git
-cd proyecto
-```  
-Si no instalas Git LFS, los archivos .csv y .pkl aparecerán como punteros inválidos. 
+Usa --force solo si trabajas solo o coordinado con tu equipo, ya que reescribe la historia del repositorio.
 
-2. **Abrir el notebook en Google Colab:**
-
-   - Subir `modelo_predictor_banco.ipynb`.
-   - Subir también los archivos `train.csv` y `test.csv` al entorno de Colab antes de ejecutar el código.
-   - Ejecutar las celdas en orden:
-     1. Carga de datos
-     2. Preprocesamiento
-     3. Entrenamiento
-     4. Evaluación
-     5. Exportación del modelo
-
-## Contacto
+# Contacto
 Para dudas o contribuciones:
-
-**Omar Alberto Torres**  
-Correo: omara.torres@udea.edu.co  
-Cel: 3043440112  
-
-
+Omar Alberto Torres
+Correo: omara.torres@udea.edu.co
+Cel: 3043440112
