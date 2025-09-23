@@ -1,6 +1,6 @@
 # Proyecto de Inteligencia Artificial: Predictor en Actividades Bancarias
 
-**Fecha de entrega:** 30 de septiembre de 2025  
+**Fecha de entrega:** 21 de agosto de 2025  
 **Asignatura:** Técnicas en Inteligencia Artificial  
 **Estudiante:** Omar Alberto Torres  
 **Docentes:** Raúl Ramos Pollán, Jonathan Granda  
@@ -36,62 +36,77 @@ El dataset incluye variables demográficas y económicas de clientes, y la varia
 - scikit-learn  
 - matplotlib  
 - joblib  
-- Otras
 
-Estas librerías ya vienen instaladas por defecto en Google Colab.
-Si deseas ejecutar el proyecto en tu equipo local, instálalas con el siguiente comando:
+Estas librerías ya vienen instaladas en Google Colab. Si deseas ejecutar en local, instálalas con:
 
 ```bash
 pip install pandas numpy scikit-learn matplotlib joblib
 ```
 # funcionamiento del codigo
 1. El notebook realiza los siguientes pasos:
-2. Instalación y carga de librerías
-3. Carga de automaticas de train.csv y test.csv desde Kaggle (Debes adquirir un json con el toque registrandose a la competencia).
-4. Exploración preliminar de los datos.
-5. Limpieza y codificación de variables categóricas.
-6. Entrenamiento de un modelo de clasificación con Random Forest.
-7. Evaluación con métricas: Accuracy, ROC-AUC y PR-AUC.
-8. Exportación del modelo entrenado (modelo_entrenado.pkl).
-9. Generación del archivo submission.csv con predicciones sobre el conjunto de prueba.
-10. generación de modelo entrenado (mpdelo_entrenado.pkl)
+2. Carga los datos desde train.csv y test.csv.
+3. Exploración preliminar de los datos.
+4. Limpieza y codificación de variables categóricas.
+5. Entrenamiento de un modelo de clasificación con Random Forest.
+6. Evaluación con métricas: Accuracy, ROC-AUC y PR-AUC.
+7. Exportación del modelo entrenado (modelo_entrenado.pkl).
+8. Generación del archivo submission.csv con predicciones sobre el conjunto de prueba.
 9. Limitaciones actuales
 10. No incluye validación cruzada ni optimización de hiperparámetros.
 11. No incorpora técnicas avanzadas de ingeniería de características.
 12. No está dockerizado ni expuesto como servicio web (fase futura).
 
 # Cómo Ejecutar el Proyecto
-1) Clone el repositorio
 
-# Clonar el repositorio
-```bash  
-git clone https://github.com/hombremono873/proyecto_IA_Fase1_Fase_2_Fase3.git
+## Opción recomendada: Google Colab
 
-```
+1. Obtener el token de API de Kaggle:  
+   - Ir a https://www.kaggle.com/account  
+   - En la sección API → hacer clic en "Create New Token"  
+   - Se descargará un archivo llamado `kaggle.json`.
 
-# Abrir y ejecutar en Google Colab
-**Nota**: Debes ingresar a la competencia cuyo link agrego nuevamente, e inscribirse en la competencia , obtener el json con token de acceso.
-```bash  
-   https://www.kaggle.com/competitions/playground-series-s5e8/overview
+2. Inscribirse en la competencia de Kaggle y acceder a los datos:  
+   - Competencia: https://www.kaggle.com/competitions/playground-series-s5e8/overview  
+   - Datos: https://www.kaggle.com/competitions/playground-series-s5e8/data  
 
-   ** Enlace directo a datos **
-   https://www.kaggle.com/competitions/playground-series-s5e8/data
- ```
-1. Subir modelo_predictor_banco.ipynb a Colab.
-2. Ejecute el rung de instalación de librerías run [1]
-3. Instale la librería de kaggle en el run[2]
-4. Seleccione tu archivo kaggle.json en el run[3]
-5. Carga del json en el ambiente de colab en el run[4]
-6. Ejecute la descarga de los archivos train.csv y test.csv al ambiente de cola en el run[5]
-7. Desspues de descargados los datasets proceda a ejecutar los run que siguen en orden consecutivo.
-8. Finalizado el proceso se vera las predicciones realizadas con el repositorio test.csv,
-   El codigo genera un archivo con las predicciones sample_submission.csv y el modelo entrenado (modelo_entrenado.pkl) 
-   en la carpeta de descargas.
-   Tambien se vera en el ambiente de colab como salida el Val Accuracy, Val ROC_AUC, VAl_PR-AUC y Calassification Report.
-   Tenga en cuenta que el modelo es desbalanceado en los ceros (Se entrenó con un dataset donde los ceros son el valor mayoritario).
-**Nota Final**
-En la documentación hecha en el mismo archivo de colab tambien encontrará las direcciones a la competencia de donde se estrajo los datos
-para realizar este trabajo   
+   Nota: estos mismos enlaces también están disponibles directamente en el notebook de Colab.
+
+3. Al ejecutar el código en Colab, se abrirá una ventana para subir el archivo `kaggle.json`.  
+   Este paso es obligatorio para poder autenticar la descarga del dataset.
+
+4. Una vez configurado, ejecutar las celdas del notebook en orden:
+   1. Descarga y carga de datos  
+   2. Exploración preliminar  
+   3. Preprocesamiento  
+   4. Entrenamiento del modelo  
+   5. Evaluación  
+   6. Exportación del modelo (`modelo_entrenado.pkl`)  
+   7. Generación del archivo `submission.csv` con las predicciones  
+
+---
+
+# Anexo: Código de configuración en Colab
+
+```bash python
+# Subir kaggle.json (abrirá una ventana para seleccionar el archivo)
+
+files.upload()
+
+# Configurar Kaggle
+!mkdir -p ~/.kaggle
+!cp kaggle.json ~/.kaggle/
+!chmod 600 ~/.kaggle/kaggle.json
+
+# Descargar y descomprimir el dataset en la carpeta ./datos
+!mkdir -p ./datos
+!kaggle competitions download -c playground-series-s5e8 -p ./datos
+!unzip -o ./datos/*.zip -d ./datos
+
+Los datos quedaran disponibles en:
+./datos/train.csv
+./datos/test.csv
+./datos/sample_submission.csv
+
 ```
 
 # Contacto
